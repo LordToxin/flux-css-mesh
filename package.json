@@ -1,0 +1,21 @@
+{
+  "name": "glassmorphism-mesh-generator",
+  "version": "1.0.0",
+  "description": "Interactive CSS glassmorphism & animated mesh gradient studio with live code generation (CSS, Tailwind, SVG)",
+  "main": "index.html",
+  "scripts": {
+    "test": "node test/generator.test.js",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "glassmorphism",
+    "mesh-gradient",
+    "css-generator",
+    "tailwind",
+    "svg",
+    "developer-tools",
+    "ui-design"
+  ],
+  "author": "Developer",
+  "license": "MIT"
+}
