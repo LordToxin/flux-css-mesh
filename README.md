@@ -124,30 +124,14 @@ node test/generator.test.js
 
 ## 💰 Monetization & Commercial Potential
 
-GlassMesh Studio Pro is architected for immediate digital product monetization and recurring revenue:
+GlassMesh Studio addresses a huge market of frontend developers, UI/UX designers, and Indie Hackers building landing pages and Web3/SaaS interfaces:
 
 | Channel / Model | Description | Revenue Potential |
 | :--- | :--- | :--- |
-| **Organic Lead Generation & SaaS Funnel** | Host as a free, high-ranking utility (`glassmesh.dev`) driving qualified traffic to custom frontend dev services, design system consulting, or a paid UI kit. | **High ROI lead magnet** ($5k - $20k agency contracts) |
+| **Organic Lead Generation & SaaS Funnel** | Host as a free, high-ranking utility driving qualified traffic to custom frontend dev services, design system consulting, or a paid UI kit. | **High ROI lead magnet** ($5k - $20k agency contracts) |
 | **Commercial UI Component Pack** | Sell an accompanying 50+ component React / Tailwind / Figma Glassmorphism UI kit on Gumroad and Lemon Squeezy. | **$29 – $59** per developer license |
 | **White-Label Agency Embed** | License the generator code to web design agencies, Framer app directory, or Webflow App marketplace as a drag-and-drop design plugin. | **$99 – $249** per white-label purchase |
 | **GitHub Sponsors / Source Boilerplate** | Turnkey commercial starter template for developers building custom graphics and CSS canvas tooling. | **$19 – $49** per copy |
-
----
-
-## 💰 Monetization & Commercial Potential
-
-GlassMesh Studio addresses a huge market of frontend developers, UI/UX designers, and Indie Hackers building landing pages and Web3/SaaS interfaces:
-
-1. **Freemium Micro-SaaS / Pro Web App ($9–$19 one-time or $4/mo)**:
-   - Free tier includes standard glass adjustments and basic CSS/SVG export.
-   - Pro unlock: 50+ luxury presets, Figma plugin integration, React / Vue component generator with micro-interactions, and 4K animated video/Lottie background export.
-2. **Turnkey Digital Asset on Gumroad / UI8 / Creative Market ($29–$59)**:
-   - Sell as a ready-to-deploy developer asset pack including source code, Figma design tokens, and CSS variables library.
-3. **Figma Plugin & Chrome Extension**:
-   - High conversion freemium funnel: designers use the free tool to export CSS/SVG, paid tier adds cloud palette sync and team design systems.
-4. **Sponsorship & Ad Revenue**:
-   - Developer tooling websites generating 20k+ monthly visits can monetize with high-CPM developer ads (DigitalOcean, Supabase, Vercel).
 
 ---
 
