@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FluxMesh — Generative CSS Mesh & Glassmorphism Studio</title>
+  <meta name="description" content="Generate ultra-smooth modern CSS mesh gradients, glassmorphism UI elements, and export directly to CSS, Tailwind, SVG, and 4K PNG.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="brand">
+        <div class="logo-mark">⚡</div>
+        <div class="brand-text">
+          <h1>FluxMesh</h1>
+          <span class="badge">Studio v1.0</span>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <div class="preset-selector-group">
+          <label for="presetSelect">Preset:</label>
+          <select id="presetSelect" class="styled-select">
+            <option value="cyberpunk">Cyberpunk Noir</option>
+            <option value="toxic">Toxic Emerald</option>
+            <option value="tokyonight">Tokyo Night</option>
+            <option value="sunset">Solar Flare</option>
+            <option value="aurora">Nordic Aurora</option>
+            <option value="deepspace">Deep Cosmos</option>
+          </select>
+        </div>
+        <button id="randomizeBtn" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          Shuffle Seed
+        </button>
+        <button id="exportModalBtn" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export Code
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="workspace">
+      <!-- Live Interactive Viewport -->
+      <section class="viewport-container">
+        <div id="meshCanvasWrapper" class="mesh-canvas-wrapper">
+          <div id="meshBackground" class="mesh-background"></div>
+          
+          <!-- Interactive Pin Overlay -->
+          <div id="pinsOverlay" class="pins-overlay"></div>
+
+          <!-- Glassmorphism Card Preview -->
+          <div id="glassCardPreview" class="glass-card">
+            <div class="card-badge">Glassmorphism Live</div>
+            <h3>Modern UI Element</h3>
+            <p>Real-time backdrop filter rendering with dynamic specular borders and high-precision dispersion.</p>
+            <div class="card-footer">
+              <span class="chip">Pure CSS</span>
+              <span class="chip">Tailwind Ready</span>
+              <span class="chip">GPU Accelerated</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="viewport-hints">
+          <span>💡 Drag nodes directly on the canvas to re-position color origins.</span>
+        </div>
+      </section>
+
+      <!-- Sidebar Controls Panel -->
+      <aside class="controls-sidebar">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="mesh">Mesh Nodes</button>
+          <button class="tab-btn" data-tab="glass">Glass FX</button>
+        </div>
+
+        <!-- Mesh Nodes Tab -->
+        <div id="tab-mesh" class="tab-content active">
+          <div class="section-title">
+            <h3>Color Points (<span id="nodeCount">4</span>)</h3>
+            <button id="addNodeBtn" class="btn-xs">+ Add Color</button>
+          </div>
+          <div id="nodesList" class="nodes-list"></div>
+
+          <div class="control-group">
+            <label>Mesh Blend Mode</label>
+            <select id="blendModeSelect" class="styled-select w-full">
+              <option value="normal">Normal</option>
+              <option value="screen">Screen (Vibrant Glow)</option>
+              <option value="overlay">Overlay (High Contrast)</option>
+              <option value="hard-light">Hard Light</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <div class="label-row">
+              <label>Global Ambient Dark Level</label>
+              <span id="darknessVal">#0a0a12</span>
+            </div>
+            <input type="color" id="baseColorInput" value="#0a0a12" class="color-picker-full">
+          </div>
+        </div>
+
+        <!-- Glass FX Tab -->
+        <div id="tab-glass" class="tab-content">
+          <div class="control-group">
+            <div class="label-row">
+              <label>Backdrop Blur</label>
+              <span id="blurVal">16px</span>
+            </div>
+            <input type="range" id="blurInput" min="0" max="40" value="16" class="styled-range">
+          </div>
+
+          <div class="control-group">
+            <div class="label-row">
+              <label>Background Opacity</label>
+              <span id="opacityVal">12%</span>
+            </div>
+            <input type="range" id="opacityInput" min="2" max="60" value="12" class="styled-range">
+          </div>
+
+          <div class="control-group">
+            <div class="label-row">
+              <label>Border Specular Highlight</label>
+              <span id="borderOpacityVal">20%</span>
+            </div>
+            <input type="range" id="borderOpacityInput" min="0" max="70" value="20" class="styled-range">
+          </div>
+
+          <div class="control-group">
+            <div class="label-row">
+              <label>Backdrop Saturation</label>
+              <span id="satVal">180%</span>
+            </div>
+            <input type="range" id="satInput" min="100" max="300" value="180" class="styled-range">
+          </div>
+
+          <div class="control-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="showGlassToggle" checked>
+              <span>Show Glass Card Preview</span>
+            </label>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Code Export Modal Drawer -->
+    <div id="exportModal" class="modal-backdrop hidden">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2>Export Code & Assets</h2>
+          <button id="closeModalBtn" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="export-tabs">
+            <button class="export-tab active" data-format="css">Pure CSS</button>
+            <button class="export-tab" data-format="tailwind">Tailwind CSS</button>
+            <button class="export-tab" data-format="svg">Raw SVG</button>
+          </div>
+          <div class="code-container">
+            <pre><code id="codeOutput">/* Loading code... */</code></pre>
+            <button id="copyCodeBtn" class="copy-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Code
+            </button>
+          </div>
+          <div class="modal-download-actions">
+            <button id="downloadPngBtn" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download 4K PNG (3840x2160)
+            </button>
+            <button id="downloadSvgBtn" class="btn btn-secondary">
+              Download SVG Vector
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden">Copied to clipboard!</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
